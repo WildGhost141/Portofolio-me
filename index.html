@@ -10,10 +10,12 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
             margin: 0; 
             padding: 0; 
-            background-color: #f8f9fa; 
-            color: #333; 
+            background-color: #f9f6f0; 
+            background-image: radial-gradient(#dcd3c6 1px, transparent 1px);
+            background-size: 25px 25px;
+            color: #332f2a;
             line-height: 1.6;
-            overflow-x: hidden; /* Mencegah layar geser ke kanan saat animasi */
+            overflow-x: hidden; 
         }
         
         /* --- ANIMASI KEYFRAMES --- */
@@ -30,44 +32,72 @@
             100% { background-position: 0% 50%; }
         }
 
-        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @keyframes scrollText {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
         header { 
             background: linear-gradient(-45deg, #1a1a2e, #16213e, #0f3460, #3a506b);
             background-size: 400% 400%;
-            animation: gradientBG 10s ease infinite; 
+            animation: gradientBG 15s ease infinite; 
             color: white; 
-            padding: 5rem 2rem; 
+            padding: 5rem 2rem 3rem 2rem; 
             text-align: center; 
             box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        .profile-container {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            animation: float 6s ease-in-out infinite;
+        /* Desain untuk Foto Muka (Profil) */
+        .blob-1 {
+            width: 200px; height: 200px;
+            background: #d0c2ae;
+            top: -20px; left: -40px;
         }
 
-        /* Desain untuk Foto Muka (Profil) */
+        .blob-2 {
+            width: 180px; height: 180px;
+            background: #8a7d6b;
+            bottom: -20px; right: -40px;
+            animation-delay: 2s;
+        }
         .profile-img {
-            width: 160px;       /* Lebar foto */
-            height: 160px;      /* Tinggi foto */
+            width: 160px;       
+            height: 160px;      
             border-radius: 50%; 
             object-fit: cover;  
             border: 4px solid #f9f6f0; 
-            margin-bottom: 1.5rem;
-            animation: fadeInUp 0.8s ease-out forwards;
             box-shadow: 0 10px 20px rgba(0,0,0,0.3);
             transition: transform 0.3s ease;
+            position: relative;
+            z-index: 1;
         }
         .profile-img:hover {
             transform: scale(1.05) rotate(3deg);
         }
 
-        header h1 { 
+       header h1 { 
             margin: 0; font-size: 2.8rem; 
             animation: fadeInUp 0.8s ease-out 0.2s forwards; 
             opacity: 0;
             letter-spacing: -0.5px;
+            position: relative; z-index: 1;
         }
         header p { 
-            font-size: 1.2rem; font-weight: 300; margin-top: 10px; 
+           font-size: 1.2rem; font-weight: 300; margin-top: 10px; 
             animation: fadeInUp 0.8s ease-out 0.4s forwards;
             opacity: 0;
-            color: #e8e3d9;
+            color: #e8e3d9; 
+            position: relative; z-index: 1;
         }
         /* --- TOMBOL HEADER --- */
         .header-buttons {
@@ -77,6 +107,7 @@
             gap: 1rem;
             animation: fadeInUp 0.8s ease-out 0.6s forwards;
             opacity: 0;
+            position: relative; z-index: 1;
         }
 
         .btn {
@@ -256,7 +287,7 @@
         <!-- SKILL SECTION -->
         <section id="skill" style="margin-top: 3rem;">
             <h2 class="section-title">Skill</h2>
-            <p>Skill & Tools </p>
+            <p>Skills & Tools </p>
             <div class="tags">
                 <span class="bubble-tag">Python</span>
                 <span class="bubble-tag">Java</span>
@@ -306,7 +337,7 @@
         <section id="contact">
             <div class="contact-box">
                 <h2 class="section-title" style="border-bottom: none; margin-bottom: 0.5rem;">Mari Berkolaborasi!</h2>
-                <p style="max-width: 600px; margin: 0 auto 2rem auto;">Tertarik untuk diskusi soal *tech*, *machine learning*, UI/UX, atau ada proyek yang bisa dikerjakan bareng? Jangan ragu buat sapa aku di bawah ini!.</p>
+                <p style="max-width: 600px; margin: 0 auto 2rem auto;">Tertarik untuk diskusi soal *tech*, *machine learning*, UI/UX, atau ada proyek yang bisa dikerjakan bareng? Jangan ragu buat sapa aku di bawah ini!</p>
                 <div class="tags" style="justify-content: center;">
                     <a href="https://mail.google.com/mail/?view=cm&fs=1&to=fadlideplu154@gmail.com" target="_blank" class="bubble-tag" style="text-decoration: none; font-size: 1rem; padding: 0.6rem 1.5rem;">Email</a>
                     <a href="https://www.linkedin.com/in/fadli-ahmad-akbar-a564a4320/" target="_blank" class="bubble-tag" style="text-decoration: none; font-size: 1rem; padding: 0.6rem 1.5rem;">LinkedIn</a>
