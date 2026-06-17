@@ -17,55 +17,57 @@
         }
         
         /* --- ANIMASI KEYFRAMES --- */
-        /* Animasi masuk dari bawah (Fade In Up) */
+       
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(40px); }
             to { opacity: 1; transform: translateY(0); }
         }
         
-        /* Animasi background bergerak di Header */
+        
         @keyframes gradientBG {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
 
-        /* Bagian Hero (Atas) */
+        
         header { 
-            /* Menggunakan warna gradient yang bergerak */
             background: linear-gradient(-45deg, #1a1a2e, #16213e, #0f3460, #3a506b);
             background-size: 400% 400%;
-            animation: gradientBG 10s ease infinite; /* Durasi animasi background */
+            animation: gradientBG 10s ease infinite; 
             color: white; 
             padding: 5rem 2rem; 
             text-align: center; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
         }
 
         /* Desain untuk Foto Muka (Profil) */
         .profile-img {
             width: 160px;       /* Lebar foto */
             height: 160px;      /* Tinggi foto */
-            border-radius: 50%; /* Bikin jadi bulat sempurna */
-            object-fit: cover;  /* Biar foto nggak peyang/gepeng */
-            border: 4px solid white; /* Kasih garis pinggir putih biar manis */
+            border-radius: 50%; 
+            object-fit: cover;  
+            border: 4px solid #f9f6f0; 
             margin-bottom: 1.5rem;
             animation: fadeInUp 0.8s ease-out forwards;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
             transition: transform 0.3s ease;
         }
         .profile-img:hover {
-            transform: scale(1.05) rotate(3deg); /* Efek lucu saat foto disorot */
+            transform: scale(1.05) rotate(3deg);
         }
 
         header h1 { 
             margin: 0; font-size: 2.8rem; 
-            animation: fadeInUp 0.8s ease-out 0.2s forwards; /* 0.2s delay */
+            animation: fadeInUp 0.8s ease-out 0.2s forwards; 
             opacity: 0;
+            letter-spacing: -0.5px;
         }
         header p { 
             font-size: 1.2rem; font-weight: 300; margin-top: 10px; 
             animation: fadeInUp 0.8s ease-out 0.4s forwards;
             opacity: 0;
+            color: #e8e3d9;
         }
         /* --- TOMBOL HEADER --- */
         .header-buttons {
@@ -86,7 +88,7 @@
         }
 
         .btn-primary {
-            background-color: white;
+            background-color: #f9f6f0;
             color: #1a1a2e;
         }
 
@@ -98,8 +100,8 @@
 
         .btn-secondary {
             background-color: transparent;
-            color: white;
-            border: 2px solid white;
+            color: #f9f6f0;
+            border: 2px solid #f9f6f0;
         }
 
         .btn-secondary:hover {
@@ -116,11 +118,12 @@
         
         /* Judul Setiap Bagian */
         .section-title { 
-            border-bottom: 3px solid #1a1a2e; 
+            border-bottom: 3px solid #d0c2ae;
             padding-bottom: 0.5rem; 
             margin-bottom: 1.5rem; 
             display: inline-block;
             font-size: 1.8rem;
+            color: #1a1a2e;
         }
         
         /* Grid untuk Kartu Portofolio */
@@ -132,13 +135,13 @@
         
         /* Desain untuk Gambar Sertifikat di dalam Card */
         .card img {
-            width: 100%;         /* Memaksa gambar agar tidak melebihi lebar kotaknya */
-            height: 200px;       /* Menyeragamkan tinggi semua gambar sertifikat */
-            object-fit: contain; /* Memastikan seluruh sertifikat terlihat (tidak kepotong/gepeng) */
+            width: 100%;         
+            height: 200px;       
+            object-fit: contain; 
             border-radius: 8px;
             margin-bottom: 1rem;
-            border: 1px solid #ddd;
-            background-color: #f8f9fa; /* Memberi warna latar jika rasio gambar beda-beda */
+            border: 1px solid #efeae0;
+            background-color: #fdfcfb; 
             transition: transform 0.3s ease;
         }
 
@@ -147,9 +150,9 @@
             background: white; 
             padding: 1.5rem; 
             border-radius: 12px; 
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
+            box-shadow: 0 4px 15px rgba(138, 125, 107, 0.08);
+            border: 1px solid #efeae0;
             transition: all 0.3s ease; 
-            /* Animasi masuk tiap card */
             animation: fadeInUp 0.8s ease-out forwards;
             opacity: 0;
         }
@@ -159,8 +162,9 @@
         .card:nth-child(3) { animation-delay: 0.6s; }
 
         .card:hover { 
-            transform: translateY(-5px); 
-            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+            ransform: translateY(-8px); 
+            box-shadow: 0 12px 25px rgba(138, 125, 107, 0.15);
+            border-color: #d0c2ae;
         }
         
         /* Gaya Tag BUBBLE */
@@ -171,20 +175,23 @@
             flex-wrap: wrap; 
         }
         .bubble-tag { 
-            background: #1a1a2e; /* Warna dasar bubble */
-            color: white;
+            background: #e8ded1; 
+            color: #1a1a2e;
             padding: 0.4rem 1rem; 
-            border-radius: 50px; /* Ini yang bikin bentuknya jadi bubble */
+            border-radius: 50px; 
             font-size: 0.85rem; 
             font-weight: 600;
             display: inline-block;
             letter-spacing: 0.5px;
-            transition: all 0.3s ease; /* Bikin transisi halus */
+            transition: all 0.3s ease; 
+            border: 1px solid #dcd1c1;
         }
         a.bubble-tag:hover {
-            background: #3a506b; 
+            background: #1a1a2e; 
+            color: #f9f6f0;
             transform: scale(1.05) translateY(-2px); 
-            box-shadow: 0 4px 10px rgba(58, 80, 107, 0.4);
+            box-shadow: 0 4px 10px rgba(26, 26, 46, 0.2);
+            border-color: #1a1a2e;
         }
 
         /* --- CONTACT SECTION --- */
@@ -193,12 +200,12 @@
             padding: 3rem 2rem;
             border-radius: 12px;
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 15px rgba(138, 125, 107, 0.08); 
+            border: 1px solid #efeae0;
             margin-bottom: 4rem;
         }
         /* --- GAYA CUSTOM CURSOR --- */
-        /* Sembunyikan kursor bawaan jika ingin efeknya maksimal (Opsional) */
-        /* body { cursor: none; } */
+        
 
         .custom-cursor {
             position: fixed;
@@ -230,7 +237,12 @@
         <img src="PFP muka.jpeg" alt="Foto Profil" class="profile-img">
 
         <h1>Halo, Aku Fadli Ahmad Akbar</h1>
-        <p>Software Engineer & UI/UX Enthusiast</p>
+        <p>Software Engineer & UI/UX Enthusiast | Mahasiswa Teknik Informatika '25</p>
+
+        <div class="header-buttons">
+            <a href="#projects" class="btn btn-primary">Lihat Karya</a>
+            <a href="#contact" class="btn btn-secondary">Hubungi Aku</a>
+        </div>
     </header>
 
     <div class="container">
@@ -244,7 +256,7 @@
         <!-- SKILL SECTION -->
         <section id="skill" style="margin-top: 3rem;">
             <h2 class="section-title">Skill</h2>
-            <p>Beberapa teknologi, bahasa pemrograman, dan *tools* desain yang sering aku gunakan:</p>
+            <p>Skill & Tools </p>
             <div class="tags">
                 <span class="bubble-tag">Python</span>
                 <span class="bubble-tag">Java</span>
@@ -258,7 +270,7 @@
 
         <!-- PORTFOLIO / CERTIFICATES SECTION -->
         <section id="projects" style="margin-top: 3rem; margin-bottom: 4rem;">
-            <h2 class="section-title">Karya/Proyek buat Sertifikat</h2>
+            <h2 class="section-title">Karya & Sertifikat</h2>
             <div class="grid">
                 
                 <div class="card">
@@ -294,7 +306,7 @@
         <section id="contact">
             <div class="contact-box">
                 <h2 class="section-title" style="border-bottom: none; margin-bottom: 0.5rem;">Mari Berkolaborasi!</h2>
-                <p style="max-width: 600px; margin: 0 auto 2rem auto;">Tertarik untuk diskusi soal *tech*, *machine learning*, UI/UX, atau ada proyek yang bisa dikerjakan bareng? Jangan ragu buat sapa aku di bawah ini.</p>
+                <p style="max-width: 600px; margin: 0 auto 2rem auto;">Tertarik untuk diskusi soal *tech*, *machine learning*, UI/UX, atau ada proyek yang bisa dikerjakan bareng? Jangan ragu buat sapa aku di bawah ini!.</p>
                 <div class="tags" style="justify-content: center;">
                     <a href="https://mail.google.com/mail/?view=cm&fs=1&to=fadlideplu154@gmail.com" target="_blank" class="bubble-tag" style="text-decoration: none; font-size: 1rem; padding: 0.6rem 1.5rem;">Email</a>
                     <a href="https://www.linkedin.com/in/fadli-ahmad-akbar-a564a4320/" target="_blank" class="bubble-tag" style="text-decoration: none; font-size: 1rem; padding: 0.6rem 1.5rem;">LinkedIn</a>
