@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio | Programmer & UI/UX</title>
+    <style>
+        /* Gaya dasar */
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            background-color: #f8f9fa; 
+            color: #333; 
+            line-height: 1.6;
+            overflow-x: hidden; /* Mencegah layar geser ke kanan saat animasi */
+        }
+        
+        /* --- ANIMASI KEYFRAMES --- */
+        /* Animasi masuk dari bawah (Fade In Up) */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Animasi background bergerak di Header */
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Bagian Hero (Atas) */
+        header { 
+            /* Menggunakan warna gradient yang bergerak */
+            background: linear-gradient(-45deg, #1a1a2e, #16213e, #0f3460, #3a506b);
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease infinite; /* Durasi animasi background */
+            color: white; 
+            padding: 5rem 2rem; 
+            text-align: center; 
+        }
+
+        /* Desain untuk Foto Muka (Profil) */
+        .profile-img {
+            width: 160px;       /* Lebar foto */
+            height: 160px;      /* Tinggi foto */
+            border-radius: 50%; /* Bikin jadi bulat sempurna */
+            object-fit: cover;  /* Biar foto nggak peyang/gepeng */
+            border: 4px solid white; /* Kasih garis pinggir putih biar manis */
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease-out forwards;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+        .profile-img:hover {
+            transform: scale(1.05) rotate(3deg); /* Efek lucu saat foto disorot */
+        }
+
+        header h1 { 
+            margin: 0; font-size: 2.8rem; 
+            animation: fadeInUp 0.8s ease-out 0.2s forwards; /* 0.2s delay */
+            opacity: 0;
+        }
+        header p { 
+            font-size: 1.2rem; font-weight: 300; margin-top: 10px; 
+            animation: fadeInUp 0.8s ease-out 0.4s forwards;
+            opacity: 0;
+        }
+        /* --- TOMBOL HEADER --- */
+        .header-buttons {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            animation: fadeInUp 0.8s ease-out 0.6s forwards;
+            opacity: 0;
+        }
+
+        .btn {
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: white;
+            color: #1a1a2e;
+        }
+
+        .btn-primary:hover {
+            background-color: #e9ecef;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255,255,255,0.3);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255,255,255,0.1);
+            transform: translateY(-3px);
+        }
+
+        /* Kontainer Utama */
+        .container { 
+            max-width: 1000px; 
+            margin: 2rem auto; 
+            padding: 0 1.5rem; 
+        }
+        
+        /* Judul Setiap Bagian */
+        .section-title { 
+            border-bottom: 3px solid #1a1a2e; 
+            padding-bottom: 0.5rem; 
+            margin-bottom: 1.5rem; 
+            display: inline-block;
+            font-size: 1.8rem;
+        }
+        
+        /* Grid untuk Kartu Portofolio */
+        .grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 1.5rem; 
+        }
+        
+        /* Desain untuk Gambar Sertifikat di dalam Card */
+        .card img {
+            width: 100%;         /* Memaksa gambar agar tidak melebihi lebar kotaknya */
+            height: 200px;       /* Menyeragamkan tinggi semua gambar sertifikat */
+            object-fit: contain; /* Memastikan seluruh sertifikat terlihat (tidak kepotong/gepeng) */
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            background-color: #f8f9fa; /* Memberi warna latar jika rasio gambar beda-beda */
+            transition: transform 0.3s ease;
+        }
+
+        /* Desain Kartu (Card) */
+        .card { 
+            background: white; 
+            padding: 1.5rem; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
+            transition: all 0.3s ease; 
+            /* Animasi masuk tiap card */
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+        /* Memberi jeda animasi agar card muncul berurutan */
+        .card:nth-child(1) { animation-delay: 0.2s; }
+        .card:nth-child(2) { animation-delay: 0.4s; }
+        .card:nth-child(3) { animation-delay: 0.6s; }
+
+        .card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Gaya Tag BUBBLE */
+        .tags { 
+            margin-top: 1rem; 
+            display: flex; 
+            gap: 0.6rem; 
+            flex-wrap: wrap; 
+        }
+        .bubble-tag { 
+            background: #1a1a2e; /* Warna dasar bubble */
+            color: white;
+            padding: 0.4rem 1rem; 
+            border-radius: 50px; /* Ini yang bikin bentuknya jadi bubble */
+            font-size: 0.85rem; 
+            font-weight: 600;
+            display: inline-block;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease; /* Bikin transisi halus */
+        }
+        a.bubble-tag:hover {
+            background: #3a506b; 
+            transform: scale(1.05) translateY(-2px); 
+            box-shadow: 0 4px 10px rgba(58, 80, 107, 0.4);
+        }
+
+        /* --- CONTACT SECTION --- */
+        .contact-box {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 4rem;
+        }
+        /* --- GAYA CUSTOM CURSOR --- */
+        /* Sembunyikan kursor bawaan jika ingin efeknya maksimal (Opsional) */
+        /* body { cursor: none; } */
+
+        .custom-cursor {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 40px; /* Ukuran lingkaran */
+            height: 40px;
+            border: 2px solid #1a1a2e; /* Warna garis lingkaran */
+            border-radius: 50%; /* Bikin jadi bulat sempurna */
+            pointer-events: none; /* PENTING: Biar kursor aslinya tetap bisa ngeklik tombol/link */
+            transform: translate(-50%, -50%); /* Posisikan pas di tengah titik mouse */
+            transition: top 0.15s ease-out, left 0.15s ease-out; /* Ini rahasia efek "ngambang/delay"-nya */
+            z-index: 9999; /* Pastikan selalu ada di lapisan paling atas */
+            background-color: rgba(26, 26, 46, 0.1); /* Efek transparan di dalam lingkaran */
+        }
+        /* Efek nyala saat tombol disorot mouse */
+        a.bubble-tag:hover {
+            background: #3a506b; /* Warnanya sedikit berubah */
+            transform: scale(1.05) translateY(-2px); /* Tombol sedikit membesar dan naik */
+            box-shadow: 0 4px 10px rgba(58, 80, 107, 0.4);
+        }
+    </style>
+</head>
+<body>
+<!-- Elemen Custom Cursor -->
+    <div class="custom-cursor"></div>
+    <!-- HERO SECTION -->
+    <header>
+        <img src="PFP muka.jpeg" alt="Foto Profil" class="profile-img">
+
+        <h1>Halo, Aku Fadli Ahmad Akbar</h1>
+        <p>Software Engineer & UI/UX Enthusiast</p>
+    </header>
+
+    <div class="container">
+        
+        <!-- ABOUT ME SECTION -->
+        <section id="about">
+            <h2 class="section-title">About Me</h2>
+            <p>Seorang mahasiswa Teknik Informatika yang memiliki ketertarikan besar dalam menerjemahkan logika sistem yang kompleks menjadi antarmuka yang mudah dan nyaman digunakan. Aku terbiasa membangun algoritma di balik layar, sekaligus merancang visual yang estetik agar pengalaman pengguna selalu menjadi prioritas utama.</p>
+        </section>
+
+        <!-- SKILL SECTION -->
+        <section id="skill" style="margin-top: 3rem;">
+            <h2 class="section-title">Skill</h2>
+            <p>Beberapa teknologi, bahasa pemrograman, dan *tools* desain yang sering aku gunakan:</p>
+            <div class="tags">
+                <span class="bubble-tag">Python</span>
+                <span class="bubble-tag">Java</span>
+                <span class="bubble-tag">Data Science</span>
+                <span class="bubble-tag">Machine Learning</span>
+                <span class="bubble-tag">Figma</span>
+                <span class="bubble-tag">Canva</span>
+                <span class="bubble-tag">UI/UX Design</span>
+            </div>
+        </section>
+
+        <!-- PORTFOLIO / CERTIFICATES SECTION -->
+        <section id="projects" style="margin-top: 3rem; margin-bottom: 4rem;">
+            <h2 class="section-title">Karya/Proyek buat Sertifikat</h2>
+            <div class="grid">
+                
+                <div class="card">
+                    <img src="UIUX GDGOC.png" alt="Sertifikat Bootcamp UI/UX">
+                    <h3>Sertifikat Bootcamp UI/UX & Prototype</h3>
+                    <p>Eksplorasi antarmuka dan *user flow* aplikasi menggunakan Figma dan Canva. Fokus pada *visual hierarchy* dan pengalaman pengguna yang intuitif.</p>
+
+                    <a href="https://www.figma.com/design/Uygm9fxvzCBseAYgALvoNH/WCUIUX5---Group-2?node-id=2001-73&t=DIA6fdhS1dr3iYpE-1" target="_blank" class="bubble-tag" style="text-decoration: none; margin-top: 10px;">
+                        Lihat Prototype
+                    </a>
+                </div>
+                
+                <div class="card">
+                    <img src="AIML GDGOC.png" alt="Sertifikat AIML">
+                    <h3>Sertifikat AI/ML Beginner</h3>
+                    <p>Implementasi model Machine Learning menggunakan Python untuk membangun sistem prediksi harga mobil berdasarkan analisis *dataset* kendaraan.</p>
+                    
+                    <a href="https://colab.research.google.com/drive/19KkCoHIybJIot9zCULqs-yc7CK6lxAY1?usp=sharing" target="_blank" class="bubble-tag" style="text-decoration: none; margin-top: 10px;">
+                        Lihat Repository / Code
+                    </a>
+                </div>
+
+                <div class="card">
+                    <h3>Portofolio Fotografi</h3>
+                    <p>Kumpulan hasil karya fotografi dan dokumentasi kegiatan.</p>
+                    <a href="Fadli Ahmad Akbar_Portofolio.pdf" target="_blank" class="bubble-tag" style="text-decoration: none; margin-top: 10px;">
+                        Buka Portofolio (PDF)
+                    </a>
+                </div>
+
+            </div>
+        </section>
+        <section id="contact">
+            <div class="contact-box">
+                <h2 class="section-title" style="border-bottom: none; margin-bottom: 0.5rem;">Mari Berkolaborasi!</h2>
+                <p style="max-width: 600px; margin: 0 auto 2rem auto;">Tertarik untuk diskusi soal *tech*, *machine learning*, UI/UX, atau ada proyek yang bisa dikerjakan bareng? Jangan ragu buat sapa aku di bawah ini.</p>
+                <div class="tags" style="justify-content: center;">
+                    <a href="fadlideplu154@gmail.com" class="bubble-tag" style="text-decoration: none; font-size: 1rem; padding: 0.6rem 1.5rem;">Email</a>
+                    <a href="https://www.linkedin.com/in/fadli-ahmad-akbar-a564a4320/" target="_blank" class="bubble-tag" style="text-decoration: none; font-size: 1rem; padding: 0.6rem 1.5rem;">LinkedIn</a>
+                    <a href="https://github.com/WildGhost141" target="_blank" class="bubble-tag" style="text-decoration: none; font-size: 1rem; padding: 0.6rem 1.5rem;">GitHub</a>
+                </div>
+
+    </div>
+
+</body>
+<!-- SCRIPT CUSTOM CURSOR -->
+    <script>
+        const cursor = document.querySelector('.custom-cursor');
+
+        // Event listener untuk mendeteksi pergerakan mouse
+        document.addEventListener('mousemove', (e) => {
+            // Mengubah posisi top dan left sesuai kordinat mouse
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+    </script>
+</html>
