@@ -290,6 +290,44 @@
             transform: scale(1.05) translateY(-2px); /* Tombol sedikit membesar dan naik */
             box-shadow: 0 4px 10px rgba(58, 80, 107, 0.4);
         }
+        @media print {
+            /* Sembunyikan elemen yang bikin PDF melebar dan error */
+            .marquee-wrapper, .blob, .header-buttons {
+                display: none !important;
+            }
+            
+            /* Matikan semua animasi agar layout tidak berantakan */
+            header, .profile-container, .profile-img, .card {
+                animation: none !important;
+                transform: none !important;
+                box-shadow: none !important; /* Hapus bayangan agar hasil PDF bersih */
+            }
+
+            /* Paksa margin kertas kembali normal */
+            body {
+                margin: 0 !important;
+                padding: 0 !important;
+                /* Paksa browser mencetak warna beige dan navy */
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            header {
+                padding: 3rem 1rem !important; /* Perkecil header agar hemat kertas */
+            }
+
+            /* Susun kartu sertifikat menjadi 2 kolom rapi di kertas */
+            .grid {
+                display: grid !important;
+                grid-template-columns: 1fr 1fr !important; 
+                gap: 1rem !important;
+            }
+            
+            .card {
+                break-inside: avoid !important; /* Mencegah kartu terpotong di tengah halaman */
+                page-break-inside: avoid !important;
+            }
+        }
     </style>
 </head>
 <body>
