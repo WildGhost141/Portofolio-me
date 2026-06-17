@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portofolio | Programmer & UI/UX</title>
-    <style>
-        /* Gaya dasar */
+<style>
+        /* --- GAYA DASAR TEMA BEIGE --- */
         body { 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
             margin: 0; 
@@ -13,18 +13,16 @@
             background-color: #f9f6f0; 
             background-image: radial-gradient(#dcd3c6 1px, transparent 1px);
             background-size: 25px 25px;
-            color: #332f2a;
+            color: #332f2a; 
             line-height: 1.6;
             overflow-x: hidden; 
         }
         
         /* --- ANIMASI KEYFRAMES --- */
-       
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(40px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        
         
         @keyframes gradientBG {
             0% { background-position: 0% 50%; }
@@ -41,8 +39,10 @@
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
         }
+
+        /* --- HEADER & FOTO PROFIL --- */
         header { 
-            background: linear-gradient(-45deg, #1a1a2e, #16213e, #0f3460, #3a506b);
+            background: linear-gradient(-45deg, #1a1a2e, #2c2520, #0f2340, #38302a);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite; 
             color: white; 
@@ -52,281 +52,88 @@
             position: relative;
             overflow: hidden;
         }
+
         .profile-container {
             position: relative;
             display: inline-block;
             margin-bottom: 1.5rem;
-            animation: float 6s ease-in-out infinite;
-        /* Desain untuk Foto Muka (Profil) */
-        .blob-1 {
-            width: 200px; height: 200px;
-            background: #d0c2ae;
-            top: -20px; left: -40px;
+            animation: float 6s ease-in-out infinite; 
+        }
+        
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(35px);
+            z-index: 0;
+            opacity: 0.6;
+            animation: float 8s ease-in-out infinite alternate;
         }
 
-        .blob-2 {
-            width: 180px; height: 180px;
-            background: #8a7d6b;
-            bottom: -20px; right: -40px;
-            animation-delay: 2s;
-        }
+        .blob-1 { width: 200px; height: 200px; background: #d0c2ae; top: -20px; left: -40px; }
+        .blob-2 { width: 180px; height: 180px; background: #8a7d6b; bottom: -20px; right: -40px; animation-delay: 2s; }
+        
         .profile-img {
-            width: 160px;       
-            height: 160px;      
-            border-radius: 50%; 
-            object-fit: cover;  
-            border: 4px solid #f9f6f0; 
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-            transition: transform 0.3s ease;
-            position: relative;
-            z-index: 1;
+            width: 160px; height: 160px; border-radius: 50%; object-fit: cover;  
+            border: 4px solid #f9f6f0; box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease; position: relative; z-index: 1; 
         }
-        .profile-img:hover {
-            transform: scale(1.05) rotate(3deg);
-        }
+        .profile-img:hover { transform: scale(1.05) rotate(3deg); }
 
-       header h1 { 
-            margin: 0; font-size: 2.8rem; 
-            animation: fadeInUp 0.8s ease-out 0.2s forwards; 
-            opacity: 0;
-            letter-spacing: -0.5px;
-            position: relative; z-index: 1;
-        }
-        header p { 
-           font-size: 1.2rem; font-weight: 300; margin-top: 10px; 
-            animation: fadeInUp 0.8s ease-out 0.4s forwards;
-            opacity: 0;
-            color: #e8e3d9; 
-            position: relative; z-index: 1;
-        }
+        header h1 { margin: 0; font-size: 2.8rem; animation: fadeInUp 0.8s ease-out 0.2s forwards; opacity: 0; letter-spacing: -0.5px; position: relative; z-index: 1; }
+        header p { font-size: 1.2rem; font-weight: 300; margin-top: 10px; animation: fadeInUp 0.8s ease-out 0.4s forwards; opacity: 0; color: #e8e3d9; position: relative; z-index: 1; }
+
         /* --- TOMBOL HEADER --- */
-        .header-buttons {
-            margin-top: 2rem;
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            animation: fadeInUp 0.8s ease-out 0.6s forwards;
-            opacity: 0;
-            position: relative; z-index: 1;
-        }
+        .header-buttons { margin-top: 2rem; display: flex; justify-content: center; gap: 1rem; animation: fadeInUp 0.8s ease-out 0.6s forwards; opacity: 0; position: relative; z-index: 1; }
+        .btn { padding: 0.6rem 1.5rem; border-radius: 50px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; }
+        .btn-primary { background-color: #f9f6f0; color: #1a1a2e; }
+        .btn-primary:hover { background-color: #e0d8c8; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(255,255,255,0.2); }
+        .btn-secondary { background-color: transparent; color: #f9f6f0; border: 2px solid #f9f6f0; }
+        .btn-secondary:hover { background-color: rgba(249, 246, 240, 0.1); transform: translateY(-3px); }
 
-        .btn {
-            padding: 0.6rem 1.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
+        /* --- INFINITE MARQUEE --- */
+        .marquee-wrapper {
+            background: #d0c2ae; color: #1a1a2e; padding: 0.8rem 0; width: 100vw; max-width: 100%;
+            overflow: hidden; position: relative; box-sizing: border-box; border-bottom: 1px solid #c2b39e;
         }
-
-        .btn-primary {
-            background-color: #f9f6f0;
-            color: #1a1a2e;
-        }
-
-        .btn-primary:hover {
-            background-color: #e9ecef;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(255,255,255,0.3);
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            color: #f9f6f0;
-            border: 2px solid #f9f6f0;
-        }
-
-        .btn-secondary:hover {
-            background-color: rgba(255,255,255,0.1);
-            transform: translateY(-3px);
-        }
-            .marquee-wrapper {
-            background: #d0c2ae; /* Warna beige sedikit lebih gelap */
-            color: #1a1a2e;
-            padding: 0.8rem 0;
-            width: 100%;
-            overflow: hidden;
-            position: relative;
-            box-shadow: inset 0 2px 10px rgba(0,0,0,0.05);
-            border-bottom: 1px solid #c2b39e;
-        }
-
         .marquee-content {
-            display: flex;
-            gap: 2rem;
-            white-space: nowrap;
-            animation: scrollText 20s linear infinite;
-            font-weight: 700;
-            font-size: 1.1rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
+            display: flex; gap: 2rem; white-space: nowrap; animation: scrollText 20s linear infinite;
+            font-weight: 700; font-size: 1.1rem; letter-spacing: 1px; text-transform: uppercase;
         }
-
-        .marquee-content span {
-            display: inline-flex;
-            align-items: center;
-        }
-
-        /* Bintang pemisah antar teks */
-        .marquee-content span::after {
-            content: "✦";
-            margin-left: 2rem;
-            opacity: 0.5;
-        }
-        /* Kontainer Utama */
-        .container { 
-            max-width: 1000px; 
-            margin: 2rem auto; 
-            padding: 0 1.5rem; 
-        }
+        .marquee-content span { display: inline-flex; align-items: center; }
+        .marquee-content span::after { content: "✦"; margin-left: 2rem; opacity: 0.5; }
         
-        /* Judul Setiap Bagian */
-        .section-title { 
-            border-bottom: 3px solid #d0c2ae;
-            padding-bottom: 0.5rem; 
-            margin-bottom: 1.5rem; 
-            display: inline-block;
-            font-size: 1.8rem;
-            color: #1a1a2e;
-        }
+        /* --- KONTEN UTAMA (YANG SEBELUMNYA TERHAPUS) --- */
+        .container { max-width: 1000px; margin: 3rem auto; padding: 0 1.5rem; }
+        .section-title { border-bottom: 3px solid #d0c2ae; padding-bottom: 0.5rem; margin-bottom: 1.5rem; display: inline-block; font-size: 1.8rem; color: #1a1a2e; }
         
-        /* Grid untuk Kartu Portofolio */
-        .grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-            gap: 1.5rem; 
-        }
-        
-        /* Desain untuk Gambar Sertifikat di dalam Card */
-        .card img {
-            width: 100%;         
-            height: 200px;       
-            object-fit: contain; 
-            border-radius: 8px;
-            margin-bottom: 1rem;
-            border: 1px solid #efeae0;
-            background-color: #fdfcfb; 
-            transition: transform 0.3s ease;
-        }
-
-        /* Desain Kartu (Card) */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
         .card { 
-            background: white; 
-            padding: 1.5rem; 
-            border-radius: 12px; 
-            box-shadow: 0 4px 15px rgba(138, 125, 107, 0.08);
-            border: 1px solid #efeae0;
-            transition: all 0.3s ease; 
-            animation: fadeInUp 0.8s ease-out forwards;
-            opacity: 0;
+            background: white; padding: 1.5rem; border-radius: 12px; 
+            box-shadow: 0 4px 15px rgba(138, 125, 107, 0.08); 
+            border: 1px solid #efeae0; transition: all 0.3s ease; 
+            animation: fadeInUp 0.8s ease-out forwards; opacity: 0;
         }
-        /* Memberi jeda animasi agar card muncul berurutan */
         .card:nth-child(1) { animation-delay: 0.2s; }
         .card:nth-child(2) { animation-delay: 0.4s; }
         .card:nth-child(3) { animation-delay: 0.6s; }
-
-        .card:hover { 
-            ransform: translateY(-8px); 
-            box-shadow: 0 12px 25px rgba(138, 125, 107, 0.15);
-            border-color: #d0c2ae;
-        }
+        .card:hover { transform: translateY(-8px); box-shadow: 0 12px 25px rgba(138, 125, 107, 0.15); border-color: #d0c2ae; }
         
-        /* Gaya Tag BUBBLE */
-        .tags { 
-            margin-top: 1rem; 
-            display: flex; 
-            gap: 0.6rem; 
-            flex-wrap: wrap; 
-        }
-        .bubble-tag { 
-            background: #e8ded1; 
-            color: #1a1a2e;
-            padding: 0.4rem 1rem; 
-            border-radius: 50px; 
-            font-size: 0.85rem; 
-            font-weight: 600;
-            display: inline-block;
-            letter-spacing: 0.5px;
-            transition: all 0.3s ease; 
-            border: 1px solid #dcd1c1;
-        }
-        a.bubble-tag:hover {
-            background: #1a1a2e; 
-            color: #f9f6f0;
-            transform: scale(1.05) translateY(-2px); 
-            box-shadow: 0 4px 10px rgba(26, 26, 46, 0.2);
-            border-color: #1a1a2e;
-        }
-
-        /* --- CONTACT SECTION --- */
-        .contact-box {
-            background: white;
-            padding: 3rem 2rem;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(138, 125, 107, 0.08); 
-            border: 1px solid #efeae0;
-            margin-bottom: 4rem;
-        }
-        /* --- GAYA CUSTOM CURSOR --- */
+        /* Penjinak Gambar Sertifikat */
+        .card img { width: 100%; height: 200px; object-fit: contain; border-radius: 8px; margin-bottom: 1rem; border: 1px solid #efeae0; background-color: #fdfcfb; transition: transform 0.3s ease; }
         
+        .tags { margin-top: 1rem; display: flex; gap: 0.6rem; flex-wrap: wrap; }
+        .bubble-tag { background: #e8ded1; color: #1a1a2e; padding: 0.4rem 1rem; border-radius: 50px; font-size: 0.85rem; font-weight: 600; display: inline-block; letter-spacing: 0.5px; transition: all 0.3s ease; border: 1px solid #dcd1c1; }
+        a.bubble-tag:hover { background: #1a1a2e; color: #f9f6f0; transform: scale(1.05) translateY(-2px); box-shadow: 0 4px 10px rgba(26, 26, 46, 0.2); border-color: #1a1a2e; }
+        .contact-box { background: white; padding: 3rem 2rem; border-radius: 12px; text-align: center; box-shadow: 0 4px 15px rgba(138, 125, 107, 0.08); border: 1px solid #efeae0; margin-bottom: 4rem; }
 
-        .custom-cursor {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 40px; /* Ukuran lingkaran */
-            height: 40px;
-            border: 2px solid #1a1a2e; /* Warna garis lingkaran */
-            border-radius: 50%; /* Bikin jadi bulat sempurna */
-            pointer-events: none; /* PENTING: Biar kursor aslinya tetap bisa ngeklik tombol/link */
-            transform: translate(-50%, -50%); /* Posisikan pas di tengah titik mouse */
-            transition: top 0.15s ease-out, left 0.15s ease-out; /* Ini rahasia efek "ngambang/delay"-nya */
-            z-index: 9999; /* Pastikan selalu ada di lapisan paling atas */
-            background-color: rgba(26, 26, 46, 0.1); /* Efek transparan di dalam lingkaran */
-        }
-        /* Efek nyala saat tombol disorot mouse */
-        a.bubble-tag:hover {
-            background: #3a506b; /* Warnanya sedikit berubah */
-            transform: scale(1.05) translateY(-2px); /* Tombol sedikit membesar dan naik */
-            box-shadow: 0 4px 10px rgba(58, 80, 107, 0.4);
-        }
+        /* --- PENGATURAN EXPORT PDF --- */
         @media print {
-            /* Sembunyikan elemen yang bikin PDF melebar dan error */
-            .marquee-wrapper, .blob, .header-buttons {
-                display: none !important;
-            }
-            
-            /* Matikan semua animasi agar layout tidak berantakan */
-            header, .profile-container, .profile-img, .card {
-                animation: none !important;
-                transform: none !important;
-                box-shadow: none !important; /* Hapus bayangan agar hasil PDF bersih */
-            }
-
-            /* Paksa margin kertas kembali normal */
-            body {
-                margin: 0 !important;
-                padding: 0 !important;
-                /* Paksa browser mencetak warna beige dan navy */
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
-            }
-
-            header {
-                padding: 3rem 1rem !important; /* Perkecil header agar hemat kertas */
-            }
-
-            /* Susun kartu sertifikat menjadi 2 kolom rapi di kertas */
-            .grid {
-                display: grid !important;
-                grid-template-columns: 1fr 1fr !important; 
-                gap: 1rem !important;
-            }
-            
-            .card {
-                break-inside: avoid !important; /* Mencegah kartu terpotong di tengah halaman */
-                page-break-inside: avoid !important;
-            }
+            .marquee-wrapper, .blob, .header-buttons, .custom-cursor { display: none !important; opacity: 0 !important; overflow: hidden !important; }
+            * { white-space: normal !important; animation: none !important; transform: none !important; transition: none !important; box-shadow: none !important; }
+            html, body { width: 100% !important; max-width: 100% !important; margin: 0 !important; padding: 0 !important; overflow-x: hidden !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+            header { padding: 3rem 1rem !important; }
+            .grid { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 1rem !important; }
+            .card { break-inside: avoid !important; page-break-inside: avoid !important; }
         }
     </style>
 </head>
